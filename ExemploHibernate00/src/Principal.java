@@ -25,9 +25,9 @@ public class Principal {
             transaction.begin();
             
             //PARA INSERIR NO SISTEMA ↓
-            //Sistema sistemaDoKleiton = new Sistema();
-            //sistemaDoKleiton.setNome("Kleiton");
-            //session.save(sistemaDoKleiton);
+            Sistema sistemaDoKleiton = new Sistema();
+            sistemaDoKleiton.setNome("Kleiton");
+            session.save(sistemaDoKleiton);
             
             //PARA ALTERAR NO SISTEMA ↓
             //sistemaDoKleiton.setId(1);  
@@ -40,9 +40,9 @@ public class Principal {
             }
              
             //PARA REMOVER! ↓
-            Sistema sistema = new Sistema();
-            sistema.setId(1);
-            session.remove(sistema);
+            //Sistema sistema = new Sistema();
+            //sistema.setId(1);
+            //session.remove(sistema);
             
             //INSERT NO BD
             transaction.commit();
