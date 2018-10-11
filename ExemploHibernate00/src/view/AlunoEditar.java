@@ -4,18 +4,32 @@ package view;
 import bean.Aluno;
 import dao.AlunoDAO;
 
-public class AlunoCadastro extends javax.swing.JFrame {
-    
-  
+public class AlunoEditar extends javax.swing.JFrame {
 
+      private Aluno aluno;
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+   
+   
+    public AlunoEditar() {
+        initComponents();
+    }
+
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jTextFieldQuantidadeDeFaltas = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldNota1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -23,16 +37,16 @@ public class AlunoCadastro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextFieldNota3 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jTextFieldNota4 = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nome");
-
         jLabel2.setText("Quantidade de Faltas");
+
+        jLabel4.setText("Id");
 
         jTextFieldQuantidadeDeFaltas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,14 +74,14 @@ public class AlunoCadastro extends javax.swing.JFrame {
 
         jLabel8.setText("Nota 4");
 
-        jButton1.setText("Salvar");
+        jLabel1.setText("Nome");
+
+        jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jLabel4.setText("Id");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,7 +112,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
                                 .addComponent(jTextFieldNota1, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextFieldNota2, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextFieldNota3, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addContainerGap(18, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +167,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNota3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+
         Aluno aluno = new Aluno();
         aluno.setNome(jTextFieldNome.getText());
         aluno.setNota1(Double.parseDouble(jTextFieldNota1.getText()));
@@ -161,10 +175,9 @@ public class AlunoCadastro extends javax.swing.JFrame {
         aluno.setNota3(Double.parseDouble(jTextFieldNota3.getText()));
         aluno.setNota4(Double.parseDouble(jTextFieldNota4.getText()));
         aluno.setQuantidadeFaltas(Integer.parseInt(
-                jTextFieldQuantidadeDeFaltas.getText()));
-        int id = new AlunoDAO().inserir(aluno);
-        
-        
+            jTextFieldQuantidadeDeFaltas.getText()));
+    boolean alterado = new AlunoDAO().alterar(aluno);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -184,20 +197,20 @@ public class AlunoCadastro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlunoCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlunoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlunoCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlunoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlunoCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlunoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlunoCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlunoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AlunoCadastro().setVisible(true);
+                new AlunoEditar().setVisible(true);
             }
         });
     }
